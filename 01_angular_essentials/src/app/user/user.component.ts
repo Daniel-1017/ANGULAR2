@@ -5,6 +5,7 @@ import {
   Input,
   input,
   Output,
+  output,
 } from '@angular/core';
 
 @Component({
@@ -19,6 +20,9 @@ export class UserComponent {
   @Input({ required: true }) avatar!: string;
   @Input({ required: true }) name!: string;
   @Output() select = new EventEmitter();
+
+  // Approach using output function instead of @Output decorator
+  // select = output<string>();
 
   // Signals approach
   // avatar = input.required<string>();
