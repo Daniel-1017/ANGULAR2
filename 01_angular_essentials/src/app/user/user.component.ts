@@ -16,9 +16,14 @@ import {
 })
 export class UserComponent {
   // Decorator approach
-  @Input({ required: true }) id!: string;
-  @Input({ required: true }) avatar!: string;
-  @Input({ required: true }) name!: string;
+  // @Input({ required: true }) id!: string;
+  // @Input({ required: true }) avatar!: string;
+  // @Input({ required: true }) name!: string;
+  @Input({ required: true }) user!: {
+    id: string;
+    name: string;
+    avatar: string;
+  };
   @Output() select = new EventEmitter();
 
   // Approach using output function instead of @Output decorator
@@ -30,10 +35,10 @@ export class UserComponent {
   // imagePath = computed(() => 'assets/users/' + this.avatar());
 
   get imagePath() {
-    return 'assets/users/' + this.avatar;
+    return 'assets/users/' + this.user.avatar;
   }
 
   onSelectUser() {
-    this.select.emit(this.id);
+    this.select.emit(this.user.id);
   }
 }
