@@ -2,6 +2,8 @@ import { Component, EventEmitter, Input } from '@angular/core';
 import { TaskComponent } from './task/task.component';
 import { NewTaskComponent } from '../tasts/new-task/new-task.component';
 
+import { type NewTaskData } from './task/task.model';
+
 const dummyTasks = [
   {
     id: 't1',
@@ -55,6 +57,17 @@ export class TasksComponent {
   }
 
   onCancelAddTask() {
+    this.isAddingTask = false;
+  }
+
+  onAddTask(taskData: NewTaskData) {
+    this.tasks.push({
+      id: crypto.randomUUID(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date,
+    });
     this.isAddingTask = false;
   }
 }
