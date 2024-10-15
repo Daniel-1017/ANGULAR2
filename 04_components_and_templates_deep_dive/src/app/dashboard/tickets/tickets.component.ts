@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { NewTicketsComponent } from './new-tickets/new-tickets.component';
 import { type Ticket } from './ticket.model';
+import { TicketComponent } from './ticket/ticket.component';
 
 @Component({
   selector: 'app-tickets',
   standalone: true,
-  imports: [NewTicketsComponent],
+  imports: [NewTicketsComponent, TicketComponent],
   templateUrl: './tickets.component.html',
   styleUrl: './tickets.component.css',
 })
