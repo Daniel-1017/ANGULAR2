@@ -1,5 +1,7 @@
 import {
   AfterContentInit,
+  afterNextRender,
+  afterRender,
   Component,
   contentChild,
   ContentChild,
@@ -37,6 +39,14 @@ export class ControlComponent implements AfterContentInit {
     contentChild.required<ElementRef<HTMLInputElement | HTMLTextAreaElement>>(
       'input'
     );
+
+  constructor() {
+    // Will lister for every future change
+    afterRender(() => console.log('afterRender'));
+
+    // Will listen only for the next change
+    afterNextRender(() => console.log('afterNextRender'));
+  }
 
   onClick() {
     console.log(this.el);
